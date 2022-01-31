@@ -39,7 +39,7 @@ class Database
             || empty($config['user'])
             || empty($config['password'])
         ){
-          //  throw new ConfigurationException('Storage configuration error');
+            throw new ConfigurationException('Storage configuration error');
         }
     }
 

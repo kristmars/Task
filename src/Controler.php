@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Task;
 
 use Task\View;
+use Throwable;
 
 require_once("src/View.php");
 require_once("src/Controler.php");
@@ -31,13 +32,19 @@ class Controler
     
     public function __construct(array $request)
     {
-        $this->database=new CategoryClass(self::$configuration['db']);
-        $this->view =new View();
-        $this->request = $request;
+        try {
+            $this->database=new CategoryClass(self::$configuration['db']);
+            $this->view =new View();
+            $this->request = $request;
+        }catch(Throwable $e)
+        {
+            throw new AppException("Wystapil blad w tworzeniu kontrolera");
+        }
     }
     public function run()
     {
         $action = $this->action();
+        $dataParams= [];
 
         switch($action){
             case 'create':
@@ -63,11 +70,7 @@ class Controler
              break;    
         }
     
-        $this->view->render($page,$site);
-        $dataParams= [
-           'category'=>$this->database->getCategory()
-      ];
-      dump($dataParams);
+        $this->view->render($page,$site,$dataParams);
     }
 
     private function action():string

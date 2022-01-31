@@ -6,7 +6,7 @@ namespace Task;
 
 class View
 {
-    public function render(string $page,string $site)
+    public function render(string $page,string $site,array $dataParams)
     {
         require_once("templates/layout.php");
     }

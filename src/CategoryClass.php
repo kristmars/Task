@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Task;
 
 use PDO;
+use Throwable;
 
 class CategoryClass extends Database
 {
@@ -17,9 +18,24 @@ class CategoryClass extends Database
 
     public function getCategory():array
     {
-        $query = "SELECT id,name FROM category";
-        $result=$this->database->connection->query($query);
-        $category=$result->fetchAll(PDO::FETCH_ASSOC);
-        return $category;
+        try {
+            $query = "SELECT id,name FROM category";
+            $result=$this->database->connection->query($query);
+            $category=$result->fetchAll(PDO::FETCH_ASSOC);
+            return $category;
+        }catch(Throwable $e)
+        {
+            throw new AppException("Nie udalo sie pobrac category");
+        }
+    }
+
+    public function saveCategory():void
+    {
+        try{
+
+        }catch(Throwable $e)
+        {
+            throw new AppException("Nie udalo sie dodac category");
+        }
     }
 }

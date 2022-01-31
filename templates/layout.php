@@ -15,6 +15,7 @@
                 <li><a href="/?action=create">Dodaje zadanie</a></li>
             </ul>
         </nav>
+        <main>
         <article>
             <scection> 
             <?php 
@@ -22,6 +23,7 @@
             ?>
             </scection>
         </article>
+        </main>
         <footer>Copy right@ InforMar 2022r</footer>
     </body>
 </html>
