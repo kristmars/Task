@@ -11,8 +11,8 @@
         <header></header>
         <nav clas="wraper">
             <ul class="menu">
-                <li><a href="/Task2/Task/">Podglad zadan</a></li>
-                <li><a href="/Task2/Task/?action=create">Dodaje zadanie</a></li>
+                <li><a href="/">Podglad zadan</a></li>
+                <li><a href="/?action=create">Dodaje zadanie</a></li>
             </ul>
         </nav>
         <article>
