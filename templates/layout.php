@@ -8,13 +8,11 @@
     </script> 
     </head>
     <body>
-        <header><svg width="20" height="20">
-            <circle cs="100" cy="100" r="50" fill="green"></circle>
-        </svg></header>
-        <nav clas="wraper">
+        <header></header>
+        <nav>
             <ul class="menu">
                 <li><a href="/">Podglad zadan</a></li>
-                <li><a href="/?action=create">Dodaje zadanie</a></li>
+                <li><a href="/?action=create">Dodaj zadanie</a></li>
             </ul>
         </nav>
         <main>
