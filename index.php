@@ -6,6 +6,7 @@ use Throwable;
 
 require_once("src/utilis/debug.php");
 require_once("src/Controler.php");
+require_once("src/Exception/AppException.php");
 
 $configuration = require_once("config/config.php");
 
@@ -15,7 +16,6 @@ $request = [
 ];
 
 try {
-    dump($request);
     Controler::initConfiguration($configuration);
     $controler = new Controler($request);
     $controler->run();

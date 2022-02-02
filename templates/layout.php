@@ -8,7 +8,9 @@
     </script> 
     </head>
     <body>
-        <header></header>
+        <header><svg width="20" height="20">
+            <circle cs="100" cy="100" r="50" fill="green"></circle>
+        </svg></header>
         <nav clas="wraper">
             <ul class="menu">
                 <li><a href="/">Podglad zadan</a></li>

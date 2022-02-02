@@ -45,6 +45,7 @@ class Controler
     {
         $action = $this->action();
         $dataParams= [];
+        $dataPost = $this->getDataPost();
 
         switch($action){
             case 'create':
@@ -55,6 +56,13 @@ class Controler
             case 'creCateg':
                 $page = 'create';
                 $site = 'creCateg';
+                if(!empty($dataPost))
+                {
+                    $dataCategory = [
+                    'NameCateg'=>$dataPost['Name']
+                    ];
+                  $this->database->saveCategory($dataCategory);  
+                }
                 $dataParams= [
                     'category'=>$this->database->getCategory()
                ];
@@ -63,16 +71,53 @@ class Controler
                 $page = 'create';
                 $site = 'creTask';
                 break;    
+            case 'delCateg':
+                $categoryId = $this->getId();
+                $page = 'create';
+                $site = 'creCateg';
+                $this->database->delCategory($categoryId);   
+                header('Location:/?action=creCateg');
+            case 'editCateg':
+                $page = 'create';
+                $site = 'editCateg';
+                $categoryId = $this->getId();
+                $category = $this->database->getCategoryById($categoryId);
+                $dataParams = [
+                    'id'=>$category['id'],
+                    'name' => $category['name']
+                ];
+               // header('Location:/?action=creCateg');
+                break;
+            case 'editedCategory':
+                $categoryId = $this->getId();
+                dump($categoryId);
+                $page = 'create';
+                $site = 'editCateg';
+                if(!empty($dataPost))
+                {
+                    $dataCategory = [
+                    'Category'=>$dataPost['Name'] ,
+                    'Id'=>$categoryId 
+                    ];
+                  $this->database->editCategory($dataCategory);  
+                }
+               header('Location:/?action=creCateg');
+                break;    
             default:
                 $page = 'lista';
                 $site = '';
              //cos sie dzieje
              break;    
         }
-    
         $this->view->render($page,$site,$dataParams);
     }
 
+    private function getId():int
+    {
+        $dataGetCateg = $this->getDataGet();
+        return $categoryId = (int) $dataGetCateg['id'];
+
+    }
     private function action():string
     {
         $dataGet = $this->getDataGet();

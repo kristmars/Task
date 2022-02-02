@@ -43,14 +43,16 @@ class Database
         }
     }
 
-   /* public function getCategory():array
-        {
-            $query = "SELECT id,name FROM category";
-            $result=$this->connection->query($query);
-            //$category=$result->fetch(PDO::FETCH_ASSOC);
-            $category=$result->fetchAll(PDO::FETCH_ASSOC);
+    public function generateId():int
+    {
+        $Y = date('Y');
+        $M = date('m');
+        $D = date('d');
+        $H = date('H');
+        $i = date('i');
+        $s = date('s');
 
-            return $category;
-        }
-   */
+        return $Id=(int)($D.$M.$Y.$H.$i.$s);
+
+    }
 }
