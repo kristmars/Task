@@ -11,8 +11,8 @@
         <header></header>
         <nav>
             <ul class="menu">
-                <li><a href="/">Podglad zadan</a></li>
-                <li><a href="/?action=create">Dodaj zadanie</a></li>
+                <li><a href="/?&app=Task">Podglad zadan</a></li>
+                <li><a href="/?action=create&app=Task">Dodaj zadanie</a></li>
             </ul>
         </nav>
         <main>

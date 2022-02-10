@@ -12,11 +12,11 @@ require_once("src/Controler.php");
 require_once("src/Database.php");
 require_once("src/CategoryClass.php");
 
-class Controler
+ class Controler
 {
-    private const Default_Action  = 'lista';
+   // private const Default_Action  = 'lista';
 
-    private const Default_SubSite = 'creTask';
+   // private const Default_SubSite = 'creTask';
     private static array $configuration = [];
     private array $request;
 

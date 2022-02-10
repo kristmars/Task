@@ -1,4 +1,4 @@
-<form class="form" action="/?action=creCateg" method="POST">
+<form class="form" action="/?action=creCateg&app=Category" method="POST">
     <label name="LName">Nazwa kategorii</label>
     <input class="inputTxt" type="text" name="Name"/>
     <input class="button" type="submit" name="Zapisz" value="Zapisz"/>
@@ -13,9 +13,9 @@
         <td><?php echo htmlentities($category['name'])?></td>
         <td>
             <ul>
-            <li  class="operacje"><a href="/?action=editCateg&id=<?php echo htmlentities($category['id'])?>">Edycja
+            <li  class="operacje"><a href="/?action=editCateg&app=Category&id=<?php echo htmlentities($category['id'])?>">Edycja
             </a></li>
-            <li  class="operacje"><a href="/?action=delCateg&id=<?php echo htmlentities($category['id'])?>">Usun
+            <li  class="operacje"><a href="/?action=delCateg&app=Category&id=<?php echo htmlentities($category['id'])?>">Usun
             </a></li>
             </ul>
         </td>

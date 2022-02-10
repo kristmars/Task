@@ -1,15 +1,15 @@
-<form clas="form" action="/?action=creTask" method="POST">
+<form clas="form" action="/?action=creTask&app=Task" method="POST">
     <label>Tytul zadania</label>
-    <input name="tytul" type="text">
+    <input class="inputTxt" name="tytul" type="text">
     <label>Opis zadania</label>
-    <input  name="description" type="textarea">
+    <input  class="inputTxt" name="description" type="textarea">
     <label>Kategoria</label>
-    <select name="category">
+    <select class="inputTxt" name="category">
     <?php foreach ($dataParams['category'] ?? [] as $category):?>
         <option><?php echo htmlentities($category['name'])?></option>
     <?php endforeach;?>    
     </select>
-    <input class="button" type="submit" name="Zapisz"/>
+    <input class="button" type="submit" name="Zapisz" value="Zapisz"/>
 </form>
 
 <table>

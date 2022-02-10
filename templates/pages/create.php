@@ -1,7 +1,7 @@
 <section>
     <div class='submenu'>
-        <a href="/?action=creCateg">Utworz kategorie</a>
-        <a href="/?action=creTask">Utworz zadanie</a>
+        <a href="/?action=creCateg&app=Category">Utworz kategorie</a>
+        <a href="/?action=creTask&app=Task">Utworz zadanie</a>
     </div>
     <div>
         <?php 
