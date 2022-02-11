@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Task;
 use Task\CategoryClass;
+use Task\AbstractControler;
 
-require_once("src/CategoryClass.php");
-require_once("src/AbstractControler.php");
+require_once("src/database/CategoryClass.php");
+require_once("AbstractControler.php");
 
 class CategoryControler extends AbstractControler
 {

@@ -6,11 +6,10 @@ use Throwable;
 use Task\Request;
 
 require_once("src/utilis/debug.php");
-require_once("src/Controler.php");
 require_once("src/Exception/AppException.php");
-require_once("src/AbstractControler.php");
-require_once("src/CategoryControler.php");
-require_once("src/TaskControler.php");
+require_once("src/Controler/AbstractControler.php");
+require_once("src/Controler/CategoryControler.php");
+require_once("src/Controler/TaskControler.php");
 require_once("src/Request.php");
 
 $configuration = require_once("config/config.php");

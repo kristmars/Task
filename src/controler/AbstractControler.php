@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace Task;
 
-require_once("Exception/ConfigurationException.php");
-require_once("Database.php");
-require_once("CategoryClass.php");
-require_once("View.php");
-require_once("TaskControler.php");
+require_once("src/Exception/ConfigurationException.php");
+require_once("src/database/Database.php");
+require_once("src/database/CategoryClass.php");
+require_once("src/database/TaskClass.php");
+require_once("src/View.php");
 
 use Task\ConfigurationException;
-use Task\TaskControler;
-use Task\CategoryControler;
+
 
 abstract class AbstractControler
 {
@@ -26,6 +25,8 @@ abstract class AbstractControler
 
     protected static array $dataParams = [];
     protected CategoryClass $databaseCategory;
+
+    protected TaskClass $databaseTask;
     protected Request $request;
     protected View $view;
 
@@ -40,7 +41,7 @@ abstract class AbstractControler
         throw new ConfigurationException('Configuration error');
       }
       $this->databaseCategory = new CategoryClass(self::$configuration['db']);
-  
+      $this->databaseTask = new TaskClass(self::$configuration['db']);
       $this->request = $request;
       $this->view = new View();
     }

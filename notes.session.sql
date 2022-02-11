@@ -1,1 +1,1 @@
- UPDATE category SET name= 'Nowa lepsza funkcjonalnosc edit' where id = 2022022091951 
+select * from  task
