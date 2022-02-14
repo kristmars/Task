@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Task;
 
-require_once("src/Exception/AppException.php");
+require_once("src/exception/AppException.php");
 
 use PDO;
 use Throwable;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Task;
 
-require_once("src/Exception/ConfigurationException.php");
+require_once("src/exception/ConfigurationException.php");
 require_once("src/database/Database.php");
 require_once("src/database/CategoryClass.php");
 require_once("src/database/TaskClass.php");
