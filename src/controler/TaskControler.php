@@ -10,28 +10,41 @@ class TaskControler extends AbstractControler
 {
    public function createAction()
    {
-    $this->view->render('create','creTask',self::$dataParams); 
+    $dataParams= [
+        'category'=>$this->databaseCategory->getCategory(),
+        'task'=>$this->databaseTask->getTask()
+     ];
+    $this->view->render('create','creTask',$dataParams); 
    }
    
     public function listaAction()
     {
-
-       $this->view->render('create','creTask',self::$dataParams);
+        $dataParams = [
+            'task'=>$this->databaseTask->getTask()
+        ];
+       $this->view->render('create','creTask',$dataParams);
     }
 
     public function creTaskAction()
     {
+
         $dataParams= [
-            'category'=>$this->databaseCategory->getCategory()
+            'category'=>$this->databaseCategory->getCategory(),
+            'task'=>$this->databaseTask->getTask()
        ];
-       
+   
         if (!empty($this->request->hasPost()))
         {
-        
+            $name = $this-> request->postParam('category');
+            $nameCategory = $this->databaseCategory->getCategoryByName($name);
+            $idCategory = $nameCategory['id'];
+
             $dataTask = [
-                'idCategory' => $this->request->postParam('idCategory'),
-                'name'       => $this->request->postParam('name'),
-                'description'=> $this->request->postParam('description')
+                'idCategory' => $idCategory,
+                'tytul'       => $this->request->postParam('tytul'),
+                'description'=> $this->request->postParam('description'),
+                'catgory' => $this->request->postParam('category'),
+                'idcategory' => $this->request->postParam('id')
             ];
 
             $this->databaseTask->saveTask($dataTask);

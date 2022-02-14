@@ -23,6 +23,21 @@ class CategoryClass extends Database
         $this->database=new Database($config);
     }
 
+   public function getCategoryByName(string $name):array
+   {
+       try{
+        $query = "SELECT id,name FROM category WHERE name = '$name'";
+        $result = $this->database->connection->query($query);
+        $idCategory = $result->fetch(PDO::FETCH_ASSOC);
+        
+        return $idCategory;
+
+       }catch(Throwable $e)
+       {
+           throw new AppException("Nie udalo sie pobrac category po nazwie");
+       }
+   }
+   
     public function getCategoryById(int $id):array
     {
         try{

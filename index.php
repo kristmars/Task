@@ -26,7 +26,7 @@ try {
  //    Controler::initConfiguration($configuration);
    // $controler = new Controler($request);
    // $controler->run();
-    
+
    AbstractControler::initConfiguration($configuration);
    if ($nameControl === 'Task') {
     (new TaskControler($request))->run();

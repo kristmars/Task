@@ -24,6 +24,8 @@ abstract class AbstractControler
     private static array $configuration = [];
 
     protected static array $dataParams = [];
+    
+    protected Database $database;
     protected CategoryClass $databaseCategory;
 
     protected TaskClass $databaseTask;
@@ -40,6 +42,7 @@ abstract class AbstractControler
       if (empty(self::$configuration['db'])) {
         throw new ConfigurationException('Configuration error');
       }
+     // $this->database = new Database(self::$configuration['db']);
       $this->databaseCategory = new CategoryClass(self::$configuration['db']);
       $this->databaseTask = new TaskClass(self::$configuration['db']);
       $this->request = $request;

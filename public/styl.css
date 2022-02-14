@@ -110,11 +110,26 @@ a:link, a:visited {
   }
 
   tr>td:nth-child(1) {
-    width: 70%;
+    width:100px;
   
   }
 
-  tr>td:nth-child(2g) {
+  tr>td:nth-child(2) {
+    width: 50px;
+  
+  }
+
+  tr>td:nth-child(3) {
+    width: 50px;
+  
+  }
+
+  tr>td:nth-child(4) {
+    width: 50px;
+  
+  }
+
+  tr>td:nth-child(5) {
     width: 50px;
   
   }
