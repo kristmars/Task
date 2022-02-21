@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Task;
-
-require_once("AbstractControler.php");
+namespace Task\controler;
 
 class TaskControler extends AbstractControler
 {
@@ -51,5 +49,33 @@ class TaskControler extends AbstractControler
         }
 
         $this->view->render('create','creTask',$dataParams);
+    }
+
+    public function delTaskAction()
+    {
+        $taskId = $this->getID();
+        $this->databaseTask->delTask($taskId);
+
+        $dataParams= [
+            'category'=>$this->databaseCategory->getCategory(),
+            'task'=>$this->databaseTask->getTask()
+       ];
+
+       $this->view->render('create','creTask',$dataParams);
+   
+    }
+
+    public function editTaskAction()
+    {
+       if (!empty($this->request->hasPost())) 
+       {
+          // $name->$this->request->;
+       }
+    }
+
+    private function getID()
+    {
+        $dataGetTask = $this->request->getParam('id');
+        return $taskId = (int) $dataGetTask;
     }
 }

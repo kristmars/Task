@@ -1,18 +1,35 @@
 <?php
 
-namespace Task;
+declare(strict_types=1);
+
+spl_autoload_register(function(string $classNamespace) 
+{
+  $path = $_SERVER['DOCUMENT_ROOT'];
+  $name = str_replace(['\\','Task/'],['/',''],$classNamespace);
+  $path = "src/$name.php";
+  require_once($path);
+});
+
+//namespace Task;
+require_once("src/utilis/debug.php");
+$configuration = require_once("config/config.php");
 
 use Throwable;
 use Task\Request;
+use Task\controler\AbstractControler;
+use Task\exception\AppException;
+use Task\exception\ConfigurationException;
+use Task\controler\CategoryControler;
+use Task\controler\TaskControler;
 
-require_once("src/utilis/debug.php");
-require_once("src/exception/AppException.php");
-require_once("src/controler/AbstractControler.php");
-require_once("src/controler/CategoryControler.php");
-require_once("src/controler/TaskControler.php");
-require_once("src/Request.php");
+//require_once("src/utilis/debug.php");
+//require_once("src/exception/AppException.php");
+//require_once("src/controler/AbstractControler.php");
+//require_once("src/controler/CategoryControler.php");
+//require_once("src/controler/TaskControler.php");
+//require_once("src/Request.php");
 
-$configuration = require_once("config/config.php");
+
 
 $request = new Request($_GET, $_POST);
 $nameControl = $request->getParam('app','Task');

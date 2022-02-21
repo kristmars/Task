@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Task;
 
-require_once("src/exception/ConfigurationException.php");
-require_once("src/database/Database.php");
-require_once("src/database/CategoryClass.php");
-require_once("src/database/TaskClass.php");
-require_once("src/View.php");
+namespace Task\controler;
 
-use Task\ConfigurationException;
+use Task\exception\ConfigurationException;
+use Task\database\Database;
+use Task\database\CategoryClass;
+use Task\database\TaskClass;
+use Task\Request;
+use Task\View;
 
 
 abstract class AbstractControler

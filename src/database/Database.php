@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Task;
+namespace Task\database;
 
 use PDO;
+use Task\exception\AppException;
+use Task\exception\ConfigurationException;
 
 class Database
 {

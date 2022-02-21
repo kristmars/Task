@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Task;
-
-require_once("src/exception/AppException.php");
+namespace Task\database;
 
 use PDO;
 use Throwable;
-use Task\AppException;
+use Task\exception\AppException;
 
 class CategoryClass extends Database
 {

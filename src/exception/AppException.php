@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Task;
+namespace Task\exception;
 
 use Exception;
 

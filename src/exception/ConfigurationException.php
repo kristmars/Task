@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Task;
+namespace Task\exception;
 
-use Task\AppException;
+use Task\exception\AppException;
 
 class ConfigurationException extends AppException
 {
