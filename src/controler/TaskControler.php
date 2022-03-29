@@ -26,11 +26,6 @@ class TaskControler extends AbstractControler
     public function creTaskAction()
     {
 
-        $dataParams= [
-            'category'=>$this->databaseCategory->getCategory(),
-            'task'=>$this->databaseTask->getTask()
-       ];
-   
         if (!empty($this->request->hasPost()))
         {
             $name = $this-> request->postParam('category');
@@ -42,11 +37,16 @@ class TaskControler extends AbstractControler
                 'tytul'       => $this->request->postParam('tytul'),
                 'description'=> $this->request->postParam('description'),
                 'catgory' => $this->request->postParam('category'),
-                'idcategory' => $this->request->postParam('id')
+                'idcategory' => $this->request->postParam('id'),
+                'state'=> $this->request->postParam('state')
             ];
 
             $this->databaseTask->saveTask($dataTask);
         }
+        $dataParams= [
+            'category'=>$this->databaseCategory->getCategory(),
+            'task'=>$this->databaseTask->getTask()
+       ];
 
         $this->view->render('create','creTask',$dataParams);
     }

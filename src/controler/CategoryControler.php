@@ -3,26 +3,41 @@
 declare(strict_types=1);
 
 namespace Task\controler;
+
+use Category;
 use Task\database\CategoryClass;
 use Task\controler\AbstractControler;
+use Task\exception\AppException;
+use Throwable;
 
 class CategoryControler extends AbstractControler
 {
+     
      public function creCategAction()
     {
         if (!empty($this->request->hasPost()))
         {
-            $dataCategory = [
+            try {
+                $dataCategory = [
                 'NameCateg'=>$this->request->postParam('Name')
-                ];  
-            $this->databaseCategory->saveCategory($dataCategory); 
+                ];
+                $this->databaseCategory->saveCategory($dataCategory);
+              }catch(Throwable $e)
+              {
+                  throw new AppException("Nie udalo sie przekazac kontolerowi do zapisania danych kategorii");
+              }
             
         }
-        $dataParams= [
+        try {
+            $dataParams= [
             'category'=>$this->databaseCategory->getCategory()
        ];
 
-       $this->view->render('create','creCateg',$dataParams);
+            $this->view->render('create', 'creCateg', $dataParams);
+        }catch(Throwable $e)
+        {
+            throw new AppException("Nie udalo sie zaprezentowac kontrolowi danych z bazy");
+        }
     } 
 
     public function showAction()
@@ -32,11 +47,10 @@ class CategoryControler extends AbstractControler
 
     public function listaAction()
     {
-        echo "Lista akcji";
+        
         $dataParams= [
             'category'=>$this->databaseCategory->getCategory()
        ];
-
        $this->view->render('lista','',$dataParams);
     }
 

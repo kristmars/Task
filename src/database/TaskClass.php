@@ -19,6 +19,8 @@ class TaskClass extends Database
 
     private string  $description;
 
+    private string $state;
+
     private DateTime $creates;
 
     private Database $databaseTask;
@@ -36,11 +38,12 @@ class TaskClass extends Database
         $idCategory = $this->databaseTask->connection->quote($dataTask['idCategory']);
         $name = $this->databaseTask->connection->quote($dataTask['tytul']);
         $description = $this->databaseTask->connection->quote($dataTask['description']);
+        $state = $this->databaseTask->connection->quote($dataTask['state']);
         $creates = date("Y-m-d H:i:s");
          
          $query = "
-         INSERT INTO task(id,id_category,name,description,creates)
-         VALUES ($id,$idCategory,$name,$description,'$creates')
+         INSERT INTO task(id,id_category,name,description,creates,state)
+         VALUES ($id,$idCategory,$name,$description,'$creates',$state)
          ";
 
          $result = $this->databaseTask->connection->exec($query);
@@ -55,7 +58,7 @@ class TaskClass extends Database
     {
         
         try{
-         $query = "SELECT task.id,task.id_category,task.name,task.description,task.creates,category.name as categoryName
+         $query = "SELECT task.id,task.id_category,task.name,task.description,task.creates,task.state,category.name as categoryName
           FROM task INNER JOIN category 
           ON task.id_category = category.id ";
          $result = $this->databaseTask->connection->query($query);
@@ -86,8 +89,8 @@ class TaskClass extends Database
             $idCategory = $this->databaseTask->connection->quote($dataTask['idCategory']);
             $name = $this->databaseTask->connection->quote($dataTask['tytul']);
             $description = $this->databaseTask->connection->quote($dataTask['description']);
+            $state = $this->databaseTask->connection->quote($dataTask['state']);
             //$query = "UPDATE task SET id_category=$idCategory,name=$name,description=$description WHERE id=$id";
-
             //$result = $this->databaseTask->connection->query($query);
         }catch(Throwable $e)
         {

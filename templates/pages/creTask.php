@@ -9,6 +9,13 @@
         <option><?php echo htmlentities($category['name']) ?></option>
     <?php endforeach;?>    
     </select>
+    <label>Status</label>
+    <select class="inputTxt" name="state">
+        <option value="Nowa">Nowa</option>
+        <option value="W trackie">W trakcie</option>
+        <option value="Zawieszona">Zawieszona</option>
+        <option value="Zakoczona">Zakonczona</option>
+    </select>
     <input class="button" type="submit" name="Zapisz" value="Zapisz"/>
 </form>
 
@@ -17,6 +24,7 @@
     <th>Tytul</th>
     <th>Opis</th>
     <th>Kategoria</th>
+    <th>Status</th>
     <th>Data utworzenia</th>
     <th>Operacje</th>
     </tr>
@@ -28,6 +36,7 @@
         <td><?php echo htmlentities($task['name'])?></td>
         <td><?php echo htmlentities($task['description'])?></td>
         <td><?php echo htmlentities($task['categoryName']) ?></td>
+        <td><?php echo htmlentities($task['state'])?></td>
         <td><?php echo htmlentities($task['creates'])?></td>
         <td>
         <ul>

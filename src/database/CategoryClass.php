@@ -10,9 +10,7 @@ use Task\exception\AppException;
 
 class CategoryClass extends Database
 {
-    private int $id;
-    private string $name;
-    private Database $database;
+     private Database $database;
 
     public function __construct(array $config)
     {   
@@ -110,43 +108,4 @@ class CategoryClass extends Database
         }
     }
 
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of name
-     */ 
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set the value of name
-     *
-     * @return  self
-     */ 
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 }

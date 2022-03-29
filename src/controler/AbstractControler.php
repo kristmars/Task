@@ -9,13 +9,15 @@ use Task\exception\ConfigurationException;
 use Task\database\Database;
 use Task\database\CategoryClass;
 use Task\database\TaskClass;
+use Task\database\AuthClass;
 use Task\Request;
 use Task\View;
+use Throwable;
 
 
 abstract class AbstractControler
 {
-    protected const Default_Action  = 'lista';
+    protected const Default_Action  = 'auth';
 
     protected const Default_SubSite = 'creTask';
 
@@ -29,6 +31,8 @@ abstract class AbstractControler
     protected CategoryClass $databaseCategory;
 
     protected TaskClass $databaseTask;
+
+    protected AuthClass $databaseUser;
     protected Request $request;
     protected View $view;
 
@@ -42,23 +46,31 @@ abstract class AbstractControler
       if (empty(self::$configuration['db'])) {
         throw new ConfigurationException('Configuration error');
       }
-     // $this->database = new Database(self::$configuration['db']);
-      $this->databaseCategory = new CategoryClass(self::$configuration['db']);
-      $this->databaseTask = new TaskClass(self::$configuration['db']);
-      $this->request = $request;
-      $this->view = new View();
+      try {
+          $this->databaseCategory = new CategoryClass(self::$configuration['db']);
+          $this->databaseTask = new TaskClass(self::$configuration['db']);
+          $this->databaseUser = new AuthClass(self::$configuration['db']);
+          $this->request = $request;
+          $this->view = new View();
+      }catch(Throwable $e)
+      {
+        throw new ConfigurationException("Bledna konfiguracja plikow");
+      }
     }
   
-    public function run(): void
+    public function run(string $action): void
     {
-      $action = $this->action() . 'Action';
-      
-
-      if (!method_exists($this, $action)) {
-        $action = self::Default_Action . 'Action';
-        }
+      dump($action);
+      if ($action === null) {
+          $action = $this->action() . 'Action';
+          if (!method_exists($this, $action)) {
+            $action = self::Default_Action . 'Action';
+            }
+      } else {
+        $action= $action . 'Action';
+      }
         $this->$action();
-
+    
     }
   
     private function action(): string

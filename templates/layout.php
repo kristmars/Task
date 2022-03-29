@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <title>Strona</title>
     <link rel="stylesheet" href="public/styl.css">
+    <link rel="icon" href="img/favicon.png" type="image/xicon">
     <script href="public/skrypt.js" >
     </script> 
     </head>
     <body>
-        <header></header>
+        <header>
+            <?php
+                require_once("templates/pages/login.php");
+            ?>
+        </header>
         <nav>
             <ul class="menu">
                 <li><a href="/?&app=Task">Podglad zadan</a></li>

@@ -6,7 +6,7 @@
 }
 
 header {
-    height : 10%;
+    height : 15%;
     width: 100%;
     background-color:mediumorchid;
 }
@@ -22,7 +22,7 @@ nav {
 }
 
 main {
-    height: 85%;
+    height: max-content;
     width: 80%;
     overflow: hidden;
     display: inline-block;
@@ -88,6 +88,17 @@ a:link, a:visited {
   .button{
       padding: 10px;
  
+  }
+
+  .login{
+    width:100px;
+    float:right;
+    border: 0px;
+    padding: 10px;
+    text-align: center;
+    font-size: small;
+    font-family: 'Courier New', Courier, monospace;
+    
   }
 
   .form{
